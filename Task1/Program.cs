@@ -13,15 +13,15 @@ namespace Task1
             {
                 PrintFirstChar(inputLine);
             }
-            catch (ArgumentNullException e)
+            catch (ArgumentNullException ex)
             {
                 Console.WriteLine("You have not entered a text.");
-                Console.WriteLine(e);
+                Console.WriteLine(ex.Message);
             }
 
             void PrintFirstChar(string inputString)
             {
-                if (inputString == "") throw new ArgumentNullException("You should provide some text");
+                if (inputString == "") throw new ArgumentNullException("You should provide some text.");
                 string[] split = inputString.Split();
                 Console.Write(split[0].Substring(0, 1));
             }

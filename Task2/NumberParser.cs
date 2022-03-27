@@ -8,15 +8,18 @@ namespace Task2
     {
         public int Parse(string stringValue)
         {
-            stringValue = stringValue.Replace(" ", String.Empty);
             if (stringValue == null)
             {
-                throw new ArgumentNullException("You should provide some text");
+                throw new ArgumentNullException("Please provide some number.");
             }
+
+            stringValue = stringValue.Replace(" ", String.Empty);
+
             if (stringValue == "")
             {
-                throw new FormatException("You should provide some text");
+                throw new FormatException("Input string is not a sequence of digits.");
             }
+
             try
             {
                 if (stringValue.First() == '-')
@@ -30,23 +33,15 @@ namespace Task2
 
                 return TransformStringToInt(stringValue, 1);
             }
-            catch (ArgumentNullException)
+            catch (ArgumentNullException ex)
             {
-                throw new ArgumentNullException();
+                Console.WriteLine(ex.Message);
+                throw new ArgumentNullException("Please provide some number.");
             }
-            catch (FormatException)
+            catch (FormatException ex)
             {
-                Console.WriteLine($"Unable to convert. Input string is not a sequence of digits.");
-                throw new FormatException();
-            }
-            catch (OverflowException)
-            {
-                Console.WriteLine("The number cannot fit in an Int32.");
-                throw new OverflowException();
-            }
-            catch (NotImplementedException)
-            {
-                throw new NotImplementedException();
+                Console.WriteLine(ex.Message);
+                throw new FormatException("Input string is not a sequence of digits.");
             }
         }
         private static int TransformStringToInt(IEnumerable<char> source, int sign)
