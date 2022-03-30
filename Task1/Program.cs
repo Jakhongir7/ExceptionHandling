@@ -18,6 +18,11 @@ namespace Task1
                 Console.WriteLine("You have not entered a text.");
                 Console.WriteLine(ex.Message);
             }
+            catch(IndexOutOfRangeException ex)
+            {
+                Console.WriteLine("Index parameter is out of range.");
+                Console.WriteLine(ex.Message);
+            }
 
             void PrintFirstChar(string inputString)
             {

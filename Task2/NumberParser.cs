@@ -43,6 +43,11 @@ namespace Task2
                 Console.WriteLine(ex.Message);
                 throw new FormatException("Input string is not a sequence of digits.");
             }
+            catch (OverflowException)
+            {
+                Console.WriteLine("The number cannot fit in an Int32.");
+                throw new OverflowException();
+            }
         }
         private static int TransformStringToInt(IEnumerable<char> source, int sign)
         {
